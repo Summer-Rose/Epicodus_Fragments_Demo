@@ -19,7 +19,7 @@ public class StudentBioFragment extends Fragment {
         StudentBioFragment studentBioFragment = new StudentBioFragment();
         Bundle args = new Bundle();
         args.putString("course", student.getCourse());
-        args.putString("name", student.getName());
+        args.putString("name", student.getFirstName() + " "+ student.getLastName());
         args.putString("bio", student.getBio());
         studentBioFragment.setArguments(args);
         return studentBioFragment;

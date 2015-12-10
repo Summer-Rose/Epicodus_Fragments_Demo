@@ -17,6 +17,7 @@ public class StudentPagerAdapter extends FragmentStatePagerAdapter {
 
     private List<Student> mStudents;
     private int mStartingPosition;
+    private int currentPosition;
 
     public StudentPagerAdapter(FragmentManager fm, List<Student> students, int startingPosition) {
         super(fm);
@@ -36,6 +37,6 @@ public class StudentPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mStudents.get(position).getName();
+        return mStudents.get(position).getFirstName();
     }
 }

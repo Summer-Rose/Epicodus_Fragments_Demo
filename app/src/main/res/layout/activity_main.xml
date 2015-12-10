@@ -35,8 +35,14 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/nameEditText"
-            android:hint="Student Name"/>
+            android:id="@+id/firstNameEditText"
+            android:hint="First Name"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lastNameEditText"
+            android:hint="Last Name"/>
 
         <EditText
             android:layout_width="match_parent"

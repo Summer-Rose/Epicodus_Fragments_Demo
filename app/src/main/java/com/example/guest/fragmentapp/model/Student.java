@@ -12,23 +12,33 @@ import com.parse.ParseQuery;
 public class Student extends ParseObject{
     public Student() {};
 
-    public Student(String name, String course, String bio) {
-        put("name", name);
+    public Student(String firstName, String lastName, String course, String bio) {
+        put("first_name", firstName);
+        put("last_name", lastName);
         put("course", course);
         put("bio", bio);
     }
 
     public static void findAll(FindCallback<Student> callback) {
         ParseQuery<Student> query = ParseQuery.getQuery(Student.class);
+        query.addAscendingOrder("first_name");
         query.findInBackground(callback);
     }
 
-    public String getName() {
-        return getString("name");
+    public String getFirstName() {
+        return getString("first_name");
     }
 
-    public void setName(String name) {
-        put("name", name);
+    public void setFirstName(String name) {
+        put("first_name", name);
+    }
+
+    public String getLastName() {
+        return getString("last_name");
+    }
+
+    public void setLastName(String name) {
+        put("last_name", name);
     }
 
     public String getCourse() {

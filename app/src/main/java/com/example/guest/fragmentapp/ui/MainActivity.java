@@ -14,7 +14,8 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Bind(R.id.nameEditText) EditText mNameEditText;
+    @Bind(R.id.firstNameEditText) EditText mFirstNameEditText;
+    @Bind(R.id.lastNameEditText) EditText mLastNameEditText;
     @Bind(R.id.courseEditText) EditText mCourseEditText;
     @Bind(R.id.bioEditText) EditText mBioEditText;
 
@@ -27,10 +28,11 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.addStudentButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = mNameEditText.getText().toString();
+                String firstName = mFirstNameEditText.getText().toString();
+                String lastName = mLastNameEditText.getText().toString();
                 String course = mCourseEditText.getText().toString();
                 String bio = mBioEditText.getText().toString();
-                Student newStudent = new Student(name, course, bio);
+                Student newStudent = new Student(firstName, lastName, course, bio);
                 newStudent.saveInBackground();
                 Intent intent = new Intent(MainActivity.this, StudentListActivity.class);
                 startActivity(intent);
