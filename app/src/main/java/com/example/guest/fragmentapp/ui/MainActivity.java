@@ -3,8 +3,6 @@ package com.example.guest.fragmentapp.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 String bio = mBioEditText.getText().toString();
                 Student newStudent = new Student(name, course, bio);
                 newStudent.saveInBackground();
-                Intent intent = new Intent(MainActivity.this, StudentsActivity.class);
+                Intent intent = new Intent(MainActivity.this, StudentListActivity.class);
                 startActivity(intent);
             }
         });
@@ -42,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.viewAllButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, StudentsActivity.class);
+                Intent intent = new Intent(MainActivity.this, StudentListActivity.class);
                 startActivity(intent);
             }
         });

@@ -21,12 +21,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.StudentsActivity"
+            android:name=".ui.StudentListActivity"
             android:label="@string/title_activity_students"
             android:parentActivityName=".ui.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.guest.fragmentapp.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.StudentBioActivity"
+            android:label="@string/title_activity_student_bio"
+            android:parentActivityName=".ui.StudentListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.guest.fragmentapp.ui.StudentListActivity" />
         </activity>
     </application>
 

@@ -1,7 +1,11 @@
 package com.example.guest.fragmentapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,18 +13,22 @@ import android.widget.TextView;
 
 import com.example.guest.fragmentapp.R;
 import com.example.guest.fragmentapp.model.Student;
+import com.example.guest.fragmentapp.ui.StudentBioActivity;
 
 import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by Guest on 12/9/15.
  */
-public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentViewHolder> {
+public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.StudentViewHolder> {
 
     private List<Student> mStudents;
     private Context mContext;
 
-    public StudentAdapter(Context context, List<Student> students) {
+    public StudentListAdapter(Context context, List<Student> students) {
         mContext = context;
         mStudents = students;
     }
@@ -42,21 +50,29 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         return mStudents.size();
     }
 
-    public class StudentViewHolder extends RecyclerView.ViewHolder {
+    public class StudentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView mNameTextView;
-        public TextView mCourseTextView;
+        @Bind(R.id.nameTextView) TextView mNameTextView;
+        @Bind(R.id.courseTextView) TextView mCourseTextView;
 
         public StudentViewHolder(View itemView) {
             super(itemView);
-
-            mNameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
-            mCourseTextView = (TextView) itemView.findViewById(R.id.courseTextView);
+            ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+            mContext = itemView.getContext();
         }
 
         public void bindStudent(Student student) {
             mNameTextView.setText(student.getName());
             mCourseTextView.setText(student.getCourse());
+        }
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, StudentBioActivity.class);
+            intent.putExtra("position", Integer.toString(itemPosition));
+            mContext.startActivity(intent);
         }
     }
 }
