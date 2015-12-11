@@ -47,7 +47,7 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         return mStudents.size();
     }
 
-    public class StudentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class StudentViewHolder extends RecyclerView.ViewHolder {
 
         @Bind(R.id.nameTextView) TextView mNameTextView;
         @Bind(R.id.courseTextView) TextView mCourseTextView;
@@ -55,21 +55,21 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         public StudentViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(this);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int itemPosition = getLayoutPosition();
+                    Intent intent = new Intent(mContext, StudentBioActivity.class);
+                    intent.putExtra("position", Integer.toString(itemPosition));
+                    mContext.startActivity(intent);
+                }
+            });
         }
 
         public void bindStudent(Student student) {
             mNameTextView.setText(student.getFirstName() + " " + student.getLastName());
             mCourseTextView.setText(student.getCourse());
-        }
-
-        @Override
-        public void onClick(View v) {
-            int itemPosition = getLayoutPosition();
-            Intent intent = new Intent(mContext, StudentBioActivity.class);
-            intent.putExtra("position", Integer.toString(itemPosition));
-            mContext.startActivity(intent);
         }
     }
 }
