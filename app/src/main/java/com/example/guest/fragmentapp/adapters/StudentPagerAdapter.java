@@ -3,7 +3,7 @@ package com.example.guest.fragmentapp.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.guest.fragmentapp.Fragments.StudentBioFragment;
 import com.example.guest.fragmentapp.model.Student;
@@ -13,16 +13,13 @@ import java.util.List;
 /**
  * Created by Guest on 12/10/15.
  */
-public class StudentPagerAdapter extends FragmentStatePagerAdapter {
+public class StudentPagerAdapter extends FragmentPagerAdapter {
 
     private List<Student> mStudents;
-    private int mStartingPosition;
-    private int currentPosition;
 
-    public StudentPagerAdapter(FragmentManager fm, List<Student> students, int startingPosition) {
+    public StudentPagerAdapter(FragmentManager fm, List<Student> students) {
         super(fm);
         mStudents = students;
-        mStartingPosition = startingPosition;
     }
 
     @Override

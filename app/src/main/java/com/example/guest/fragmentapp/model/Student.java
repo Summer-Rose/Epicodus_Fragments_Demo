@@ -13,32 +13,32 @@ public class Student extends ParseObject{
     public Student() {};
 
     public Student(String firstName, String lastName, String course, String bio) {
-        put("first_name", firstName);
-        put("last_name", lastName);
+        put("firstName", firstName);
+        put("lastName", lastName);
         put("course", course);
         put("bio", bio);
     }
 
     public static void findAll(FindCallback<Student> callback) {
         ParseQuery<Student> query = ParseQuery.getQuery(Student.class);
-        query.addAscendingOrder("first_name");
+        query.addAscendingOrder("firstName");
         query.findInBackground(callback);
     }
 
     public String getFirstName() {
-        return getString("first_name");
+        return getString("firstName");
     }
 
     public void setFirstName(String name) {
-        put("first_name", name);
+        put("firstName", name);
     }
 
     public String getLastName() {
-        return getString("last_name");
+        return getString("lastName");
     }
 
     public void setLastName(String name) {
-        put("last_name", name);
+        put("lastName", name);
     }
 
     public String getCourse() {

@@ -10,7 +10,15 @@ import android.widget.TextView;
 import com.example.guest.fragmentapp.R;
 import com.example.guest.fragmentapp.model.Student;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class StudentBioFragment extends Fragment {
+
+    @Bind(R.id.studentNameTextView) TextView nameLabel;
+    @Bind(R.id.courseTextView) TextView courseLabel;
+    @Bind(R.id.bioTextView) TextView bioLabel;
+
     private String name;
     private String course;
     private String bio;
@@ -37,10 +45,8 @@ public class StudentBioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_student_bio, container, false);
-        TextView tvLabel = (TextView) view.findViewById(R.id.studentNameTextView);
-        TextView courseLabel = (TextView) view.findViewById(R.id.courseTextView);
-        TextView bioLabel = (TextView) view.findViewById(R.id.bioTextView);
-        tvLabel.setText(name);
+        ButterKnife.bind(this, view);
+        nameLabel.setText(name);
         courseLabel.setText(course);
         bioLabel.setText(bio);
         return view;
